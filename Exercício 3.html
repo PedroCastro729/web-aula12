@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code of Abs Plus - Dia 9</title>
+
+    <script>
+        window.onload = inicio;
+
+        // [feito?, exercício]
+        let exercicios = [
+            [false, "20 reverse flutter kicks"],
+            [false, "20-count hold"],
+            [false, "20 knee rolls"]
+        ];
+
+        function inicio() {
+            let botao = document.getElementById('btnMarcar');
+            botao.addEventListener('click', marcar);
+
+            atualizar();
+        }
+
+        function marcar() {
+            let campoNumero = document.getElementById('numero');
+            let numero = campoNumero.value;
+
+            exercicios[numero - 1][0] = true;
+
+            atualizar();
+        }
+
+        function atualizar() {
+            let listaPendentes = document.getElementById('listaPendentes');
+            listaPendentes.innerHTML = "";
+
+            let listaFeitos = document.getElementById('listaFeitos');
+            listaFeitos.innerHTML = "";
+
+            for (let i = 0; i < exercicios.length; i++) {
+
+                if (exercicios[i][0] == false) {
+                    listaPendentes.innerHTML +=
+                        "<li>" + (i + 1) + " - " + exercicios[i][1] + "</li>";
+                }
+                else {
+                    listaFeitos.innerHTML +=
+                        "<li>" + exercicios[i][1] + "</li>";
+                }
+
+            }
+        }
+    </script>
+</head>
+
+<body>
+
+    <h1>Code of Abs Plus - Dia 9</h1>
+
+    <h2>Exercícios a fazer</h2>
+    <ol id="listaPendentes"></ol>
+
+    <label>Número do exercício concluído:</label>
+    <input type="number" id="numero"><br>
+
+    <button id="btnMarcar">Marcar como feito</button>
+
+    <h2>Exercícios concluídos</h2>
+    <ul id="listaFeitos"></ul>
+
+</body>
+
+</html>
